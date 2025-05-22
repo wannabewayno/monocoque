@@ -1,0 +1,40 @@
+{
+  "name": "monocoque",
+  "version": "1.0.0",
+  "description": "Template that delivers an opinionated framework using provider-consumer architecture for documentation driven projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wannabewayno/monocoque.git"
+  },
+  "keywords": [
+    "monorepo",
+    "framework"
+  ],
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "biome format --write",
+      "biome lint"
+    ],
+    "**/*.go": [
+      "gofmt -w"
+    ]
+  },
+  "author": "Wayne Griffiths",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wannabewayno/monocoque/issues"
+  },
+  "homepage": "https://github.com/wannabewayno/monocoque#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.4",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0"
+  }
+}
