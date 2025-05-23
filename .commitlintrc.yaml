@@ -2,8 +2,10 @@ parserPreset: conventional-changelog-conventionalcommits
 extends:
   - '@commitlint/config-conventional'
 rules:
-    scope-enum: [2, always, [Apps, Packages]]
+    scope-enum: [2, always, [project]]
+    scope-case: [2, always, lower-case]
     scope-empty: [2, never]
+    subject-case: [2, always, sentence-case]
 prompt:
   messages:
     skip: ':skip'
@@ -62,17 +64,17 @@ prompt:
           emoji: '🗑'
     scope:
       description: 'The change is commit is  scoped to (e.g. this project (repo), a package, an application, infrastructure)'
-      enum: ['Apps', 'Packages']
+      enum: ["project"]
     subject:
       description: 'Write a short, imperative tense description of the change'
     body:
       description: 'Provide a longer description of the change'
-    # isBreaking:
-    #   description: 'Are there any breaking changes?'
-    # breakingBody:
-    #   description: 'A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself'
-    # breaking:
-    #   description: 'Describe the breaking changes'
+    isBreaking:
+      description: 'Are there any breaking changes?'
+    breakingBody:
+      description: 'A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself'
+    breaking:
+      description: 'Describe the breaking changes'
     isIssueAffected:
       description: 'Does this change affect any open issues?'
     issuesBody:
