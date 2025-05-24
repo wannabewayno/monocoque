@@ -12,21 +12,23 @@ Designed for teams that value:
 ```bash
 .
 ├── Apps/                # Deployable applications
-│   └── [app-name]/      # e.g., `auth-service`, `web-ui`
+│   └── [app-name]/      # Application code
 ├── Packages/            # Reusable libraries (versioned)
+│   └── [package-name]/  # Pacakge code
 ├── Infra/               # IaC (AWS CDK/Terraform)
-│   └── stacks/          # Per-app deployment configs
+│   ├── [stack-name].ts  # Application deployment config
+│   └── main.ts          # Infra entrypoint (deploys all stacks)
 └── .changeset/          # Versioning metadata
 ```
 
 ## ✨ Why Use This?
 
-| Feature                | Benefit                                                                 |
-|------------------------|-------------------------------------------------------------------------|
-| **Provider-Consumer Model** | Apps communicate via versioned SDKs.                               |
-| **Docs → SDK Automation**  | OpenAPI/AsyncAPI specs auto-generate clients.                       |
-| **SemVer Enforcement** | Breaking changes are detected from docs, not code.                      |
-| **Monorepo Isolation** | Apps/packages are versioned independently but share tooling.            |
+| Feature                     | Benefit                                                          |
+|-----------------------------|------------------------------------------------------------------|
+| **Provider-Consumer Model** | Apps communicate via versioned SDKs.                             |
+| **Docs → SDK Automation**   | OpenAPI/AsyncAPI specs auto-generate clients.                    |
+| **SemVer Enforcement**      | Breaking changes are detected from docs, not code.               |
+| **Monorepo Isolation**      | Apps/packages are versioned independently but share tooling.     |
 
 ## 🚀 Getting Started
 
@@ -70,16 +72,16 @@ git push --follow-tags
 ## 📜 Rules of the Road
 
 1. **Docs Are Truth**  
-   - APIs are defined by OpenAPI/AsyncAPI specs (generated from runtime).  
-   - SDKs are **always** generated, never handwritten.  
+- APIs are defined by OpenAPI/AsyncAPI specs (generated from runtime).  
+- SDKs are **always** generated, never handwritten.  
 
-2. **Break Glass for Breaking Changes**  
-   - `major` version bumps require:  
-     - Migration guide in `docs/`.  
-     - Approval via Changeset.  
+1. **Break Glass for Breaking Changes**  
+- `major` version bumps require:  
+  - Migration guide in `docs/`.  
+  - Approval via Changeset.  
 
-3. **Infra Follows Apps**  
-   - Each app’s infrastructure lives in `Infra/stacks/[app-name]`.  
+1. **Infra Follows Apps**  
+- Each app’s infrastructure lives in `Infra/[app-name].ts`.  
 
 ---
 
